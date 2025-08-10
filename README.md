@@ -217,7 +217,7 @@ To conditionally display the widget:
 
 ```liquid
 {% if settings.enable_chat_widget %}
-  {% section 'support-widget' %}
+  {% render 'support-widget' %}
 {% endif %}
 ```
 ---
