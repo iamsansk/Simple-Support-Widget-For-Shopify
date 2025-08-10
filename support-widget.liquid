@@ -1,0 +1,151 @@
+<div class="main__support__widget">
+  <div class="main__widget">
+    <h2 class="black">{{ settings.support_title }}</h2>
+    {% if settings.enable_chat_us %}
+      <div class="widget__icon chat__us">
+        <a href="https://api.whatsapp.com/send?phone={{ settings.chat_number }}&text=Hi" target="_blank"
+          title="{{ settings.chat_number }}">{{ 'whatsapp.svg' | inline_asset_content }}{{ settings.chat_us_text }}</a
+        >
+      </div>
+    {% endif %}
+    {% if settings.enable_call_us %}
+      <div class="widget__icon call__us">
+        <a href="tel:{{ settings.call_number }}" target="_blank" title="{{ settings.call_number }}">{{ 'call.svg' | inline_asset_content }}{{ settings.call_us_text }}</a>
+      </div>
+    {% endif %}
+    {% if settings.enable_write_us %}
+      <div class="widget__icon write__us">
+        <a href="/pages/contact" title="{{ shop.email }}">{{ 'mail.svg' | inline_asset_content }}{{ settings.write_us_text }}</a>
+      </div>
+    {% endif %}
+    <span class="close__icon">x</span>
+
+  </div>
+  <div class="support__widget">
+    <div class="sywh-open-services">
+      {{ 'chat-icon.svg' | inline_asset_content }}
+    </div>
+  </div>
+</div>
+
+<style>
+  .main__support__widget {
+      right: 40px;
+      bottom:50px;
+      position: fixed;
+      z-index: 999;
+  }
+
+  .support__widget .sywh-open-services {
+      background-color: {{  settings.widget_color}};
+      color: #fff;
+      line-height: 55px;
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+      font-size:35px;
+      width: 50px;
+      height:50px;
+      text-align: center;
+      box-shadow: 2px 2px 8px -3px #000;
+      border-radius: 100%;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      -ms-border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+  }
+
+  .support__widget .sywh-open-services i {
+      line-height: 65px;
+      font-size: 3rem;
+  }
+  .main__widget {
+    height: 330px;
+    width: 300px;
+    color: #fff !important;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(to bottom, {{ settings.bg_color }} 35%, #ffffff 100%);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 999;
+    transform: scale(0) translate(100%, 100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    transform-origin: bottom right; /* Expand from button corner */
+  }
+
+  .main__widget.active {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .main__widget h2{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: {{  settings.heading_color }};
+  }
+  .widget__icon{
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .widget__icon a{
+    color: {{ settings.text_color }};
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-weight: 600;
+  }
+  .widget_icon__svg{
+    color: {{ settings.text_color }};
+   }
+  .widget__icon a svg{
+    margin-right: 10px;
+  }
+  .close__icon{
+    position: absolute;
+    top: -5px;
+    right: 7px;
+    font-weight: bold;
+    font-size: 2.35rem;
+    cursor: pointer;
+    padding: 10px;
+  }
+  @media screen and (max-width: 749px){
+    .main__support__widget {
+      bottom: 30px;
+      right: 30px;
+  }
+    .main__widget {
+      height: 320px;
+      width: 280px;
+      right: 10px;
+    }
+  }
+</style>
+
+<script>
+  document.querySelector(".support__widget").addEventListener("click", () => {
+    document.querySelector(".main__widget").classList.toggle("active");
+  });
+  document.querySelector(".close__icon").addEventListener("click", () => {
+    document.querySelector(".main__widget").classList.toggle("active");
+  });
+</script>
