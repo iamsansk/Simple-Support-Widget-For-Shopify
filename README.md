@@ -230,6 +230,12 @@ To conditionally display the widget:
 
 ---
 
+### 🎨 Preview
+
+<img width="1896" height="752" alt="image" src="https://github.com/user-attachments/assets/9599b8fe-e2ae-4d82-ab9e-2f4b1415d259" />
+
+---
+
 ## 🐛 Found a Bug?
 
 If you found any bugs in the code, feel free to:
